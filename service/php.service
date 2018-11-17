@@ -1,0 +1,13 @@
+[Unit]
+Description=Kenvix PHP-FPM Service
+After=network.target remote-fs.target nss-lookup.target
+  
+[Service]
+Type=forking
+ExecStart=/usr/bin/php-fpm
+PrivateTmp=true
+RestartSec=1min
+Restart=on-failure
+  
+[Install]
+WantedBy=multi-user.target

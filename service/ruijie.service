@@ -1,0 +1,15 @@
+[Unit]
+Description=Ruijie Mentohust Control Service // By Kenvix
+After=network.target local_fs.target remote_fs.target named.target dhcpcd.service
+Wants=network.target local_fs.target remote_fs.target named.target dhcpcd.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/mentohust
+RestartSec=1min
+Restart=on-failure
+ExecStop=/usr/kill -INT $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+Alias=rj.service
